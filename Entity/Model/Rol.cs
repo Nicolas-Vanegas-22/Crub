@@ -10,7 +10,7 @@ namespace Entity.Model
     {
         public string firstname { get; set; }
 
-
-}
+        public string description { get; set; }
+    }
 }
     
