@@ -29,6 +29,9 @@
         <EntityTypeShape EntityType="DbModel.Service" Width="1.5" PointX="19" PointY="0.75" />
         <AssociationConnector Association="DbModel.ServiceFavoriteUser" />
         <EntityTypeShape EntityType="DbModel.DestinationService" Width="1.5" PointX="21.375" PointY="1" />
+        <EntityTypeShape EntityType="DbModel.Imagen" Width="1.5" PointX="19.375" PointY="5.5" />
+        <EntityTypeShape EntityType="DbModel.reservation_detail" Width="1.875" PointX="16.875" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Tag" Width="1.5" PointX="13" PointY="7.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
