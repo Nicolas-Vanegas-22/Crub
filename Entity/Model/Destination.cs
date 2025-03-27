@@ -2,6 +2,7 @@ namespace Entity.Model
 {
     public class DestinationDTO
     {
+        public int IdDestination { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public double Latitude { get; set; }
@@ -11,5 +12,7 @@ namespace Entity.Model
         public string Recommendations { get; set; }
         public string Climate { get; set; }
         public string IdealSeason { get; set; }
+        public string MainImage { get; set; }
+
     }
 }

@@ -2,16 +2,16 @@ using System;
 
 namespace Entity.Model
 {
-    public class Blog
+    public class BlogDTO
     {
-        public int Idblog { get; set; }
-        public int Iduser { get; set; }
-        public string qualification { get; set; }
-        public string content { get; set; }
-        public DateTime publicationdate { get; set; }
-        public string featuredimage { get; set; }
-        public bool asset { get; set; }
-        public int visits { get; set; }
+        public int IdBlog { get; set; }
+        public int IdUser { get; set; }
+        public string Qualification { get; set; }
+        public string Content { get; set; }
+        public DateTime PublicationDate { get; set; }
+        public string FeaturedImage { get; set; }
+        public bool Asset { get; set; }
+        public int Visits { get; set; }
 
 
 
