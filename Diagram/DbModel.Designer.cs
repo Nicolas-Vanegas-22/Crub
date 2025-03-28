@@ -30,6 +30,21 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("DbModel", "UserFavoriteUser", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.User), "FavoriteUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.FavoriteUser), true)]
 [assembly: EdmRelationshipAttribute("DbModel", "UserServiceProvider", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.User), "ServiceProvider", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.ServiceProvider), true)]
 [assembly: EdmRelationshipAttribute("DbModel", "ServiceFavoriteUser", "Service", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.Service), "FavoriteUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.FavoriteUser), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "ServiceDestinationService", "Service", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.Service), "DestinationService", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.DestinationService), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "DestinationDestinationService", "Destination", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.Destination), "DestinationService", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.DestinationService), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "ServiceAvailability", "Service", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.Service), "Availability", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.Availability), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "ServiceProviderService1", "ServiceProvider", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.ServiceProvider), "Service", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.Service), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "Reservationreservation_detail", "Reservation", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.Reservation), "reservation_detail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.reservation_detail), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "UserReservation", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.User), "Reservation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.Reservation), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "Reservationpayment", "Reservation", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.Reservation), "payment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.payment), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "FavoriteUsernotification", "FavoriteUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.FavoriteUser), "notification", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.notification), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "Usernotification", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.User), "notification", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.notification), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "Blogblog_tag", "Blog", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.Blog), "blog_tag", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.blog_tag), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "UserBlog", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.User), "Blog", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.Blog), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "Tagblog_tag", "Tag", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.Tag), "blog_tag", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.blog_tag), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "ServiceReview", "Service", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.Service), "Review", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.Review), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "UserReview", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.User), "Review", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.Review), true)]
+[assembly: EdmRelationshipAttribute("DbModel", "service_categoryService", "service_category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Diagram.service_category), "Service", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Diagram.Service), true)]
 
 #endregion
 
@@ -448,6 +463,38 @@ namespace Diagram
             }
         }
         private ObjectSet<blog_tag> _blog_tags;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Destination> Destinations
+        {
+            get
+            {
+                if ((_Destinations == null))
+                {
+                    _Destinations = base.CreateObjectSet<Destination>("Destinations");
+                }
+                return _Destinations;
+            }
+        }
+        private ObjectSet<Destination> _Destinations;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Reservation> Reservations
+        {
+            get
+            {
+                if ((_Reservations == null))
+                {
+                    _Reservations = base.CreateObjectSet<Reservation>("Reservations");
+                }
+                return _Reservations;
+            }
+        }
+        private ObjectSet<Reservation> _Reservations;
 
         #endregion
 
@@ -636,6 +683,22 @@ namespace Diagram
         {
             base.AddObject("blog_tags", blog_tag);
         }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Destinations. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToDestinations(Destination destination)
+        {
+            base.AddObject("Destinations", destination);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Reservations. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToReservations(Reservation reservation)
+        {
+            base.AddObject("Reservations", reservation);
+        }
 
         #endregion
 
@@ -665,7 +728,8 @@ namespace Diagram
         /// <param name="start_time">Valor inicial de la propiedad start_time.</param>
         /// <param name="end_time">Valor inicial de la propiedad end_time.</param>
         /// <param name="available">Valor inicial de la propiedad available.</param>
-        public static Availability CreateAvailability(global::System.Int32 id, global::System.String id_availability, global::System.String id_service, global::System.String date, global::System.String start_time, global::System.String end_time, global::System.String available)
+        /// <param name="serviceId">Valor inicial de la propiedad ServiceId.</param>
+        public static Availability CreateAvailability(global::System.Int32 id, global::System.String id_availability, global::System.String id_service, global::System.String date, global::System.String start_time, global::System.String end_time, global::System.String available, global::System.Int32 serviceId)
         {
             Availability availability = new Availability();
             availability.Id = id;
@@ -675,6 +739,7 @@ namespace Diagram
             availability.start_time = start_time;
             availability.end_time = end_time;
             availability.available = available;
+            availability.ServiceId = serviceId;
             return availability;
         }
 
@@ -852,6 +917,72 @@ namespace Diagram
         private global::System.String _available;
         partial void OnavailableChanging(global::System.String value);
         partial void OnavailableChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ServiceId
+        {
+            get
+            {
+                return _ServiceId;
+            }
+            set
+            {
+                OnServiceIdChanging(value);
+                ReportPropertyChanging("ServiceId");
+                _ServiceId = StructuralObject.SetValidValue(value, "ServiceId");
+                ReportPropertyChanged("ServiceId");
+                OnServiceIdChanged();
+            }
+        }
+        private global::System.Int32 _ServiceId;
+        partial void OnServiceIdChanging(global::System.Int32 value);
+        partial void OnServiceIdChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "ServiceAvailability", "Service")]
+        public Service Service
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Service>("DbModel.ServiceAvailability", "Service").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Service>("DbModel.ServiceAvailability", "Service").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Service> ServiceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Service>("DbModel.ServiceAvailability", "Service");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Service>("DbModel.ServiceAvailability", "Service", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -879,7 +1010,8 @@ namespace Diagram
         /// <param name="featured_image">Valor inicial de la propiedad featured_image.</param>
         /// <param name="active">Valor inicial de la propiedad active.</param>
         /// <param name="views">Valor inicial de la propiedad views.</param>
-        public static Blog CreateBlog(global::System.Int32 id, global::System.String id_blog, global::System.String id_user, global::System.String title, global::System.String content, global::System.String publish_date, global::System.String featured_image, global::System.String active, global::System.String views)
+        /// <param name="userId">Valor inicial de la propiedad UserId.</param>
+        public static Blog CreateBlog(global::System.Int32 id, global::System.String id_blog, global::System.String id_user, global::System.String title, global::System.String content, global::System.String publish_date, global::System.String featured_image, global::System.String active, global::System.String views, global::System.Int32 userId)
         {
             Blog blog = new Blog();
             blog.Id = id;
@@ -891,6 +1023,7 @@ namespace Diagram
             blog.featured_image = featured_image;
             blog.active = active;
             blog.views = views;
+            blog.UserId = userId;
             return blog;
         }
 
@@ -1116,6 +1249,94 @@ namespace Diagram
         private global::System.String _views;
         partial void OnviewsChanging(global::System.String value);
         partial void OnviewsChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value, "UserId");
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private global::System.Int32 _UserId;
+        partial void OnUserIdChanging(global::System.Int32 value);
+        partial void OnUserIdChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "Blogblog_tag", "blog_tag")]
+        public EntityCollection<blog_tag> blog_tag
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<blog_tag>("DbModel.Blogblog_tag", "blog_tag");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<blog_tag>("DbModel.Blogblog_tag", "blog_tag", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "UserBlog", "User")]
+        public User User
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.UserBlog", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.UserBlog", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> UserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.UserBlog", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DbModel.UserBlog", "User", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -1137,12 +1358,16 @@ namespace Diagram
         /// <param name="id">Valor inicial de la propiedad Id.</param>
         /// <param name="id_blog">Valor inicial de la propiedad id_blog.</param>
         /// <param name="id_tag">Valor inicial de la propiedad id_tag.</param>
-        public static blog_tag Createblog_tag(global::System.Int32 id, global::System.String id_blog, global::System.String id_tag)
+        /// <param name="blogId">Valor inicial de la propiedad BlogId.</param>
+        /// <param name="tagId">Valor inicial de la propiedad TagId.</param>
+        public static blog_tag Createblog_tag(global::System.Int32 id, global::System.String id_blog, global::System.String id_tag, global::System.Int32 blogId, global::System.Int32 tagId)
         {
             blog_tag blog_tag = new blog_tag();
             blog_tag.Id = id;
             blog_tag.id_blog = id_blog;
             blog_tag.id_tag = id_tag;
+            blog_tag.BlogId = blogId;
+            blog_tag.TagId = tagId;
             return blog_tag;
         }
 
@@ -1224,6 +1449,134 @@ namespace Diagram
         private global::System.String _id_tag;
         partial void Onid_tagChanging(global::System.String value);
         partial void Onid_tagChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BlogId
+        {
+            get
+            {
+                return _BlogId;
+            }
+            set
+            {
+                OnBlogIdChanging(value);
+                ReportPropertyChanging("BlogId");
+                _BlogId = StructuralObject.SetValidValue(value, "BlogId");
+                ReportPropertyChanged("BlogId");
+                OnBlogIdChanged();
+            }
+        }
+        private global::System.Int32 _BlogId;
+        partial void OnBlogIdChanging(global::System.Int32 value);
+        partial void OnBlogIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TagId
+        {
+            get
+            {
+                return _TagId;
+            }
+            set
+            {
+                OnTagIdChanging(value);
+                ReportPropertyChanging("TagId");
+                _TagId = StructuralObject.SetValidValue(value, "TagId");
+                ReportPropertyChanged("TagId");
+                OnTagIdChanged();
+            }
+        }
+        private global::System.Int32 _TagId;
+        partial void OnTagIdChanging(global::System.Int32 value);
+        partial void OnTagIdChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "Blogblog_tag", "Blog")]
+        public Blog Blog
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Blog>("DbModel.Blogblog_tag", "Blog").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Blog>("DbModel.Blogblog_tag", "Blog").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Blog> BlogReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Blog>("DbModel.Blogblog_tag", "Blog");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Blog>("DbModel.Blogblog_tag", "Blog", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "Tagblog_tag", "Tag")]
+        public Tag Tag
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tag>("DbModel.Tagblog_tag", "Tag").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tag>("DbModel.Tagblog_tag", "Tag").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Tag> TagReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Tag>("DbModel.Tagblog_tag", "Tag");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Tag>("DbModel.Tagblog_tag", "Tag", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -1564,6 +1917,374 @@ namespace Diagram
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DbModel", Name="Destination")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Destination : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Destination.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad Id.</param>
+        /// <param name="idDestination">Valor inicial de la propiedad IdDestination.</param>
+        /// <param name="name">Valor inicial de la propiedad Name.</param>
+        /// <param name="description">Valor inicial de la propiedad Description.</param>
+        /// <param name="latitude">Valor inicial de la propiedad Latitude.</param>
+        /// <param name="length">Valor inicial de la propiedad Length.</param>
+        /// <param name="address">Valor inicial de la propiedad Address.</param>
+        /// <param name="openingHours">Valor inicial de la propiedad OpeningHours.</param>
+        /// <param name="recommendations">Valor inicial de la propiedad Recommendations.</param>
+        /// <param name="climate">Valor inicial de la propiedad Climate.</param>
+        /// <param name="idealSeason">Valor inicial de la propiedad IdealSeason.</param>
+        /// <param name="mainImage">Valor inicial de la propiedad MainImage.</param>
+        public static Destination CreateDestination(global::System.Int32 id, global::System.String idDestination, global::System.String name, global::System.String description, global::System.String latitude, global::System.String length, global::System.String address, global::System.String openingHours, global::System.String recommendations, global::System.String climate, global::System.String idealSeason, global::System.String mainImage)
+        {
+            Destination destination = new Destination();
+            destination.Id = id;
+            destination.IdDestination = idDestination;
+            destination.Name = name;
+            destination.Description = description;
+            destination.Latitude = latitude;
+            destination.Length = length;
+            destination.Address = address;
+            destination.OpeningHours = openingHours;
+            destination.Recommendations = recommendations;
+            destination.Climate = climate;
+            destination.IdealSeason = idealSeason;
+            destination.MainImage = mainImage;
+            return destination;
+        }
+
+        #endregion
+
+        #region Propiedades simples
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String IdDestination
+        {
+            get
+            {
+                return _IdDestination;
+            }
+            set
+            {
+                OnIdDestinationChanging(value);
+                ReportPropertyChanging("IdDestination");
+                _IdDestination = StructuralObject.SetValidValue(value, false, "IdDestination");
+                ReportPropertyChanged("IdDestination");
+                OnIdDestinationChanged();
+            }
+        }
+        private global::System.String _IdDestination;
+        partial void OnIdDestinationChanging(global::System.String value);
+        partial void OnIdDestinationChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Latitude
+        {
+            get
+            {
+                return _Latitude;
+            }
+            set
+            {
+                OnLatitudeChanging(value);
+                ReportPropertyChanging("Latitude");
+                _Latitude = StructuralObject.SetValidValue(value, false, "Latitude");
+                ReportPropertyChanged("Latitude");
+                OnLatitudeChanged();
+            }
+        }
+        private global::System.String _Latitude;
+        partial void OnLatitudeChanging(global::System.String value);
+        partial void OnLatitudeChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Length
+        {
+            get
+            {
+                return _Length;
+            }
+            set
+            {
+                OnLengthChanging(value);
+                ReportPropertyChanging("Length");
+                _Length = StructuralObject.SetValidValue(value, false, "Length");
+                ReportPropertyChanged("Length");
+                OnLengthChanged();
+            }
+        }
+        private global::System.String _Length;
+        partial void OnLengthChanging(global::System.String value);
+        partial void OnLengthChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Address
+        {
+            get
+            {
+                return _Address;
+            }
+            set
+            {
+                OnAddressChanging(value);
+                ReportPropertyChanging("Address");
+                _Address = StructuralObject.SetValidValue(value, false, "Address");
+                ReportPropertyChanged("Address");
+                OnAddressChanged();
+            }
+        }
+        private global::System.String _Address;
+        partial void OnAddressChanging(global::System.String value);
+        partial void OnAddressChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String OpeningHours
+        {
+            get
+            {
+                return _OpeningHours;
+            }
+            set
+            {
+                OnOpeningHoursChanging(value);
+                ReportPropertyChanging("OpeningHours");
+                _OpeningHours = StructuralObject.SetValidValue(value, false, "OpeningHours");
+                ReportPropertyChanged("OpeningHours");
+                OnOpeningHoursChanged();
+            }
+        }
+        private global::System.String _OpeningHours;
+        partial void OnOpeningHoursChanging(global::System.String value);
+        partial void OnOpeningHoursChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Recommendations
+        {
+            get
+            {
+                return _Recommendations;
+            }
+            set
+            {
+                OnRecommendationsChanging(value);
+                ReportPropertyChanging("Recommendations");
+                _Recommendations = StructuralObject.SetValidValue(value, false, "Recommendations");
+                ReportPropertyChanged("Recommendations");
+                OnRecommendationsChanged();
+            }
+        }
+        private global::System.String _Recommendations;
+        partial void OnRecommendationsChanging(global::System.String value);
+        partial void OnRecommendationsChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Climate
+        {
+            get
+            {
+                return _Climate;
+            }
+            set
+            {
+                OnClimateChanging(value);
+                ReportPropertyChanging("Climate");
+                _Climate = StructuralObject.SetValidValue(value, false, "Climate");
+                ReportPropertyChanged("Climate");
+                OnClimateChanged();
+            }
+        }
+        private global::System.String _Climate;
+        partial void OnClimateChanging(global::System.String value);
+        partial void OnClimateChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String IdealSeason
+        {
+            get
+            {
+                return _IdealSeason;
+            }
+            set
+            {
+                OnIdealSeasonChanging(value);
+                ReportPropertyChanging("IdealSeason");
+                _IdealSeason = StructuralObject.SetValidValue(value, false, "IdealSeason");
+                ReportPropertyChanged("IdealSeason");
+                OnIdealSeasonChanged();
+            }
+        }
+        private global::System.String _IdealSeason;
+        partial void OnIdealSeasonChanging(global::System.String value);
+        partial void OnIdealSeasonChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String MainImage
+        {
+            get
+            {
+                return _MainImage;
+            }
+            set
+            {
+                OnMainImageChanging(value);
+                ReportPropertyChanging("MainImage");
+                _MainImage = StructuralObject.SetValidValue(value, false, "MainImage");
+                ReportPropertyChanged("MainImage");
+                OnMainImageChanged();
+            }
+        }
+        private global::System.String _MainImage;
+        partial void OnMainImageChanging(global::System.String value);
+        partial void OnMainImageChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "DestinationDestinationService", "DestinationService")]
+        public EntityCollection<DestinationService> DestinationService
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DestinationService>("DbModel.DestinationDestinationService", "DestinationService");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DestinationService>("DbModel.DestinationDestinationService", "DestinationService", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="DbModel", Name="DestinationService")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1576,11 +2297,15 @@ namespace Diagram
         /// </summary>
         /// <param name="id">Valor inicial de la propiedad Id.</param>
         /// <param name="property1">Valor inicial de la propiedad Property1.</param>
-        public static DestinationService CreateDestinationService(global::System.Int32 id, global::System.String property1)
+        /// <param name="serviceId">Valor inicial de la propiedad ServiceId.</param>
+        /// <param name="destinationId">Valor inicial de la propiedad DestinationId.</param>
+        public static DestinationService CreateDestinationService(global::System.Int32 id, global::System.String property1, global::System.Int32 serviceId, global::System.Int32 destinationId)
         {
             DestinationService destinationService = new DestinationService();
             destinationService.Id = id;
             destinationService.Property1 = property1;
+            destinationService.ServiceId = serviceId;
+            destinationService.DestinationId = destinationId;
             return destinationService;
         }
 
@@ -1638,6 +2363,134 @@ namespace Diagram
         private global::System.String _Property1;
         partial void OnProperty1Changing(global::System.String value);
         partial void OnProperty1Changed();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ServiceId
+        {
+            get
+            {
+                return _ServiceId;
+            }
+            set
+            {
+                OnServiceIdChanging(value);
+                ReportPropertyChanging("ServiceId");
+                _ServiceId = StructuralObject.SetValidValue(value, "ServiceId");
+                ReportPropertyChanged("ServiceId");
+                OnServiceIdChanged();
+            }
+        }
+        private global::System.Int32 _ServiceId;
+        partial void OnServiceIdChanging(global::System.Int32 value);
+        partial void OnServiceIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 DestinationId
+        {
+            get
+            {
+                return _DestinationId;
+            }
+            set
+            {
+                OnDestinationIdChanging(value);
+                ReportPropertyChanging("DestinationId");
+                _DestinationId = StructuralObject.SetValidValue(value, "DestinationId");
+                ReportPropertyChanged("DestinationId");
+                OnDestinationIdChanged();
+            }
+        }
+        private global::System.Int32 _DestinationId;
+        partial void OnDestinationIdChanging(global::System.Int32 value);
+        partial void OnDestinationIdChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "ServiceDestinationService", "Service")]
+        public Service Service
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Service>("DbModel.ServiceDestinationService", "Service").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Service>("DbModel.ServiceDestinationService", "Service").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Service> ServiceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Service>("DbModel.ServiceDestinationService", "Service");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Service>("DbModel.ServiceDestinationService", "Service", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "DestinationDestinationService", "Destination")]
+        public Destination Destination
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Destination>("DbModel.DestinationDestinationService", "Destination").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Destination>("DbModel.DestinationDestinationService", "Destination").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Destination> DestinationReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Destination>("DbModel.DestinationDestinationService", "Destination");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Destination>("DbModel.DestinationDestinationService", "Destination", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -1901,6 +2754,28 @@ namespace Diagram
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Service>("DbModel.ServiceFavoriteUser", "Service", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "FavoriteUsernotification", "notification")]
+        public EntityCollection<notification> notification
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<notification>("DbModel.FavoriteUsernotification", "notification");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<notification>("DbModel.FavoriteUsernotification", "notification", value);
                 }
             }
         }
@@ -2802,7 +3677,9 @@ namespace Diagram
         /// <param name="creation_date">Valor inicial de la propiedad creation_date.</param>
         /// <param name="read">Valor inicial de la propiedad read.</param>
         /// <param name="notification_type">Valor inicial de la propiedad notification_type.</param>
-        public static notification Createnotification(global::System.Int32 id, global::System.String id_notification, global::System.String id_user, global::System.String title, global::System.String message, global::System.String creation_date, global::System.String read, global::System.String notification_type)
+        /// <param name="favoriteUserId">Valor inicial de la propiedad FavoriteUserId.</param>
+        /// <param name="userId">Valor inicial de la propiedad UserId.</param>
+        public static notification Createnotification(global::System.Int32 id, global::System.String id_notification, global::System.String id_user, global::System.String title, global::System.String message, global::System.String creation_date, global::System.String read, global::System.String notification_type, global::System.Int32 favoriteUserId, global::System.Int32 userId)
         {
             notification notification = new notification();
             notification.Id = id;
@@ -2813,6 +3690,8 @@ namespace Diagram
             notification.creation_date = creation_date;
             notification.read = read;
             notification.notification_type = notification_type;
+            notification.FavoriteUserId = favoriteUserId;
+            notification.UserId = userId;
             return notification;
         }
 
@@ -3014,6 +3893,134 @@ namespace Diagram
         private global::System.String _notification_type;
         partial void Onnotification_typeChanging(global::System.String value);
         partial void Onnotification_typeChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 FavoriteUserId
+        {
+            get
+            {
+                return _FavoriteUserId;
+            }
+            set
+            {
+                OnFavoriteUserIdChanging(value);
+                ReportPropertyChanging("FavoriteUserId");
+                _FavoriteUserId = StructuralObject.SetValidValue(value, "FavoriteUserId");
+                ReportPropertyChanged("FavoriteUserId");
+                OnFavoriteUserIdChanged();
+            }
+        }
+        private global::System.Int32 _FavoriteUserId;
+        partial void OnFavoriteUserIdChanging(global::System.Int32 value);
+        partial void OnFavoriteUserIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value, "UserId");
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private global::System.Int32 _UserId;
+        partial void OnUserIdChanging(global::System.Int32 value);
+        partial void OnUserIdChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "FavoriteUsernotification", "FavoriteUser")]
+        public FavoriteUser FavoriteUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FavoriteUser>("DbModel.FavoriteUsernotification", "FavoriteUser").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FavoriteUser>("DbModel.FavoriteUsernotification", "FavoriteUser").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<FavoriteUser> FavoriteUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FavoriteUser>("DbModel.FavoriteUsernotification", "FavoriteUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FavoriteUser>("DbModel.FavoriteUsernotification", "FavoriteUser", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "Usernotification", "User")]
+        public User User
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.Usernotification", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.Usernotification", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> UserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.Usernotification", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DbModel.Usernotification", "User", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -3040,7 +4047,8 @@ namespace Diagram
         /// <param name="payment_method">Valor inicial de la propiedad payment_method.</param>
         /// <param name="payment_reference">Valor inicial de la propiedad payment_reference.</param>
         /// <param name="payment_status">Valor inicial de la propiedad payment_status.</param>
-        public static payment Createpayment(global::System.Int32 id, global::System.String id_payment, global::System.String id_reservation, global::System.String amount, global::System.String payment_date, global::System.String payment_method, global::System.String payment_reference, global::System.String payment_status)
+        /// <param name="reservationId">Valor inicial de la propiedad ReservationId.</param>
+        public static payment Createpayment(global::System.Int32 id, global::System.String id_payment, global::System.String id_reservation, global::System.String amount, global::System.String payment_date, global::System.String payment_method, global::System.String payment_reference, global::System.String payment_status, global::System.Int32 reservationId)
         {
             payment payment = new payment();
             payment.Id = id;
@@ -3051,6 +4059,7 @@ namespace Diagram
             payment.payment_method = payment_method;
             payment.payment_reference = payment_reference;
             payment.payment_status = payment_status;
+            payment.ReservationId = reservationId;
             return payment;
         }
 
@@ -3252,6 +4261,72 @@ namespace Diagram
         private global::System.String _payment_status;
         partial void Onpayment_statusChanging(global::System.String value);
         partial void Onpayment_statusChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ReservationId
+        {
+            get
+            {
+                return _ReservationId;
+            }
+            set
+            {
+                OnReservationIdChanging(value);
+                ReportPropertyChanging("ReservationId");
+                _ReservationId = StructuralObject.SetValidValue(value, "ReservationId");
+                ReportPropertyChanged("ReservationId");
+                OnReservationIdChanged();
+            }
+        }
+        private global::System.Int32 _ReservationId;
+        partial void OnReservationIdChanging(global::System.Int32 value);
+        partial void OnReservationIdChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "Reservationpayment", "Reservation")]
+        public Reservation Reservation
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Reservation>("DbModel.Reservationpayment", "Reservation").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Reservation>("DbModel.Reservationpayment", "Reservation").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Reservation> ReservationReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Reservation>("DbModel.Reservationpayment", "Reservation");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Reservation>("DbModel.Reservationpayment", "Reservation", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -3394,6 +4469,330 @@ namespace Diagram
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DbModel", Name="Reservation")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Reservation : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Reservation.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad Id.</param>
+        /// <param name="idReservartion">Valor inicial de la propiedad IdReservartion.</param>
+        /// <param name="idUser">Valor inicial de la propiedad IdUser.</param>
+        /// <param name="reservationDate">Valor inicial de la propiedad ReservationDate.</param>
+        /// <param name="state">Valor inicial de la propiedad State.</param>
+        /// <param name="total">Valor inicial de la propiedad total.</param>
+        /// <param name="specialNotes">Valor inicial de la propiedad SpecialNotes.</param>
+        /// <param name="userId">Valor inicial de la propiedad UserId.</param>
+        public static Reservation CreateReservation(global::System.Int32 id, global::System.String idReservartion, global::System.String idUser, global::System.String reservationDate, global::System.String state, global::System.String total, global::System.String specialNotes, global::System.Int32 userId)
+        {
+            Reservation reservation = new Reservation();
+            reservation.Id = id;
+            reservation.IdReservartion = idReservartion;
+            reservation.IdUser = idUser;
+            reservation.ReservationDate = reservationDate;
+            reservation.State = state;
+            reservation.total = total;
+            reservation.SpecialNotes = specialNotes;
+            reservation.UserId = userId;
+            return reservation;
+        }
+
+        #endregion
+
+        #region Propiedades simples
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String IdReservartion
+        {
+            get
+            {
+                return _IdReservartion;
+            }
+            set
+            {
+                OnIdReservartionChanging(value);
+                ReportPropertyChanging("IdReservartion");
+                _IdReservartion = StructuralObject.SetValidValue(value, false, "IdReservartion");
+                ReportPropertyChanged("IdReservartion");
+                OnIdReservartionChanged();
+            }
+        }
+        private global::System.String _IdReservartion;
+        partial void OnIdReservartionChanging(global::System.String value);
+        partial void OnIdReservartionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String IdUser
+        {
+            get
+            {
+                return _IdUser;
+            }
+            set
+            {
+                OnIdUserChanging(value);
+                ReportPropertyChanging("IdUser");
+                _IdUser = StructuralObject.SetValidValue(value, false, "IdUser");
+                ReportPropertyChanged("IdUser");
+                OnIdUserChanged();
+            }
+        }
+        private global::System.String _IdUser;
+        partial void OnIdUserChanging(global::System.String value);
+        partial void OnIdUserChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ReservationDate
+        {
+            get
+            {
+                return _ReservationDate;
+            }
+            set
+            {
+                OnReservationDateChanging(value);
+                ReportPropertyChanging("ReservationDate");
+                _ReservationDate = StructuralObject.SetValidValue(value, false, "ReservationDate");
+                ReportPropertyChanged("ReservationDate");
+                OnReservationDateChanged();
+            }
+        }
+        private global::System.String _ReservationDate;
+        partial void OnReservationDateChanging(global::System.String value);
+        partial void OnReservationDateChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String State
+        {
+            get
+            {
+                return _State;
+            }
+            set
+            {
+                OnStateChanging(value);
+                ReportPropertyChanging("State");
+                _State = StructuralObject.SetValidValue(value, false, "State");
+                ReportPropertyChanged("State");
+                OnStateChanged();
+            }
+        }
+        private global::System.String _State;
+        partial void OnStateChanging(global::System.String value);
+        partial void OnStateChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String total
+        {
+            get
+            {
+                return _total;
+            }
+            set
+            {
+                OntotalChanging(value);
+                ReportPropertyChanging("total");
+                _total = StructuralObject.SetValidValue(value, false, "total");
+                ReportPropertyChanged("total");
+                OntotalChanged();
+            }
+        }
+        private global::System.String _total;
+        partial void OntotalChanging(global::System.String value);
+        partial void OntotalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SpecialNotes
+        {
+            get
+            {
+                return _SpecialNotes;
+            }
+            set
+            {
+                OnSpecialNotesChanging(value);
+                ReportPropertyChanging("SpecialNotes");
+                _SpecialNotes = StructuralObject.SetValidValue(value, false, "SpecialNotes");
+                ReportPropertyChanged("SpecialNotes");
+                OnSpecialNotesChanged();
+            }
+        }
+        private global::System.String _SpecialNotes;
+        partial void OnSpecialNotesChanging(global::System.String value);
+        partial void OnSpecialNotesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value, "UserId");
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private global::System.Int32 _UserId;
+        partial void OnUserIdChanging(global::System.Int32 value);
+        partial void OnUserIdChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "Reservationreservation_detail", "reservation_detail")]
+        public EntityCollection<reservation_detail> reservation_detail
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<reservation_detail>("DbModel.Reservationreservation_detail", "reservation_detail");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<reservation_detail>("DbModel.Reservationreservation_detail", "reservation_detail", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "UserReservation", "User")]
+        public User User
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.UserReservation", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.UserReservation", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> UserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.UserReservation", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DbModel.UserReservation", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "Reservationpayment", "payment")]
+        public EntityCollection<payment> payment
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<payment>("DbModel.Reservationpayment", "payment");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<payment>("DbModel.Reservationpayment", "payment", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="DbModel", Name="reservation_detail")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -3412,7 +4811,8 @@ namespace Diagram
         /// <param name="service_time">Valor inicial de la propiedad service_time.</param>
         /// <param name="number_of_people">Valor inicial de la propiedad number_of_people.</param>
         /// <param name="subtotal">Valor inicial de la propiedad subtotal.</param>
-        public static reservation_detail Createreservation_detail(global::System.Int32 id, global::System.String id_detail, global::System.String id_reservation, global::System.String id_service, global::System.String service_date, global::System.String service_time, global::System.String number_of_people, global::System.String subtotal)
+        /// <param name="reservationId">Valor inicial de la propiedad ReservationId.</param>
+        public static reservation_detail Createreservation_detail(global::System.Int32 id, global::System.String id_detail, global::System.String id_reservation, global::System.String id_service, global::System.String service_date, global::System.String service_time, global::System.String number_of_people, global::System.String subtotal, global::System.Int32 reservationId)
         {
             reservation_detail reservation_detail = new reservation_detail();
             reservation_detail.Id = id;
@@ -3423,6 +4823,7 @@ namespace Diagram
             reservation_detail.service_time = service_time;
             reservation_detail.number_of_people = number_of_people;
             reservation_detail.subtotal = subtotal;
+            reservation_detail.ReservationId = reservationId;
             return reservation_detail;
         }
 
@@ -3624,6 +5025,72 @@ namespace Diagram
         private global::System.String _subtotal;
         partial void OnsubtotalChanging(global::System.String value);
         partial void OnsubtotalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ReservationId
+        {
+            get
+            {
+                return _ReservationId;
+            }
+            set
+            {
+                OnReservationIdChanging(value);
+                ReportPropertyChanging("ReservationId");
+                _ReservationId = StructuralObject.SetValidValue(value, "ReservationId");
+                ReportPropertyChanged("ReservationId");
+                OnReservationIdChanged();
+            }
+        }
+        private global::System.Int32 _ReservationId;
+        partial void OnReservationIdChanging(global::System.Int32 value);
+        partial void OnReservationIdChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "Reservationreservation_detail", "Reservation")]
+        public Reservation Reservation
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Reservation>("DbModel.Reservationreservation_detail", "Reservation").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Reservation>("DbModel.Reservationreservation_detail", "Reservation").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Reservation> ReservationReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Reservation>("DbModel.Reservationreservation_detail", "Reservation");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Reservation>("DbModel.Reservationreservation_detail", "Reservation", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -3650,7 +5117,9 @@ namespace Diagram
         /// <param name="comment">Valor inicial de la propiedad comment.</param>
         /// <param name="review_date">Valor inicial de la propiedad review_date.</param>
         /// <param name="approved">Valor inicial de la propiedad approved.</param>
-        public static Review CreateReview(global::System.Int32 id, global::System.String id_review, global::System.String id_user, global::System.String id_service, global::System.String rating, global::System.String comment, global::System.String review_date, global::System.String approved)
+        /// <param name="serviceId">Valor inicial de la propiedad ServiceId.</param>
+        /// <param name="userId">Valor inicial de la propiedad UserId.</param>
+        public static Review CreateReview(global::System.Int32 id, global::System.String id_review, global::System.String id_user, global::System.String id_service, global::System.String rating, global::System.String comment, global::System.String review_date, global::System.String approved, global::System.Int32 serviceId, global::System.Int32 userId)
         {
             Review review = new Review();
             review.Id = id;
@@ -3661,6 +5130,8 @@ namespace Diagram
             review.comment = comment;
             review.review_date = review_date;
             review.approved = approved;
+            review.ServiceId = serviceId;
+            review.UserId = userId;
             return review;
         }
 
@@ -3862,6 +5333,134 @@ namespace Diagram
         private global::System.String _approved;
         partial void OnapprovedChanging(global::System.String value);
         partial void OnapprovedChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ServiceId
+        {
+            get
+            {
+                return _ServiceId;
+            }
+            set
+            {
+                OnServiceIdChanging(value);
+                ReportPropertyChanging("ServiceId");
+                _ServiceId = StructuralObject.SetValidValue(value, "ServiceId");
+                ReportPropertyChanged("ServiceId");
+                OnServiceIdChanged();
+            }
+        }
+        private global::System.Int32 _ServiceId;
+        partial void OnServiceIdChanging(global::System.Int32 value);
+        partial void OnServiceIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value, "UserId");
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private global::System.Int32 _UserId;
+        partial void OnUserIdChanging(global::System.Int32 value);
+        partial void OnUserIdChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "ServiceReview", "Service")]
+        public Service Service
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Service>("DbModel.ServiceReview", "Service").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Service>("DbModel.ServiceReview", "Service").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Service> ServiceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Service>("DbModel.ServiceReview", "Service");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Service>("DbModel.ServiceReview", "Service", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "UserReview", "User")]
+        public User User
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.UserReview", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.UserReview", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> UserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DbModel.UserReview", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DbModel.UserReview", "User", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -4619,7 +6218,10 @@ namespace Diagram
         /// <param name="requirements">Valor inicial de la propiedad Requirements.</param>
         /// <param name="includes">Valor inicial de la propiedad Includes.</param>
         /// <param name="notIncluded">Valor inicial de la propiedad NotIncluded.</param>
-        public static Service CreateService(global::System.Int32 id, global::System.String idService, global::System.String idProvider, global::System.String idCategory, global::System.String name, global::System.String description, global::System.String basePrice, global::System.String duration, global::System.String maximumCapacity, global::System.String available, global::System.String requirements, global::System.String includes, global::System.String notIncluded)
+        /// <param name="serviceProviderId">Valor inicial de la propiedad ServiceProviderId.</param>
+        /// <param name="serviceProviderId1">Valor inicial de la propiedad ServiceProviderId1.</param>
+        /// <param name="service_categoryId">Valor inicial de la propiedad service_categoryId.</param>
+        public static Service CreateService(global::System.Int32 id, global::System.String idService, global::System.String idProvider, global::System.String idCategory, global::System.String name, global::System.String description, global::System.String basePrice, global::System.String duration, global::System.String maximumCapacity, global::System.String available, global::System.String requirements, global::System.String includes, global::System.String notIncluded, global::System.Int32 serviceProviderId, global::System.Int32 serviceProviderId1, global::System.Int32 service_categoryId)
         {
             Service service = new Service();
             service.Id = id;
@@ -4635,6 +6237,9 @@ namespace Diagram
             service.Requirements = requirements;
             service.Includes = includes;
             service.NotIncluded = notIncluded;
+            service.ServiceProviderId = serviceProviderId;
+            service.ServiceProviderId1 = serviceProviderId1;
+            service.service_categoryId = service_categoryId;
             return service;
         }
 
@@ -4956,6 +6561,78 @@ namespace Diagram
         private global::System.String _NotIncluded;
         partial void OnNotIncludedChanging(global::System.String value);
         partial void OnNotIncludedChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ServiceProviderId
+        {
+            get
+            {
+                return _ServiceProviderId;
+            }
+            set
+            {
+                OnServiceProviderIdChanging(value);
+                ReportPropertyChanging("ServiceProviderId");
+                _ServiceProviderId = StructuralObject.SetValidValue(value, "ServiceProviderId");
+                ReportPropertyChanged("ServiceProviderId");
+                OnServiceProviderIdChanged();
+            }
+        }
+        private global::System.Int32 _ServiceProviderId;
+        partial void OnServiceProviderIdChanging(global::System.Int32 value);
+        partial void OnServiceProviderIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ServiceProviderId1
+        {
+            get
+            {
+                return _ServiceProviderId1;
+            }
+            set
+            {
+                OnServiceProviderId1Changing(value);
+                ReportPropertyChanging("ServiceProviderId1");
+                _ServiceProviderId1 = StructuralObject.SetValidValue(value, "ServiceProviderId1");
+                ReportPropertyChanged("ServiceProviderId1");
+                OnServiceProviderId1Changed();
+            }
+        }
+        private global::System.Int32 _ServiceProviderId1;
+        partial void OnServiceProviderId1Changing(global::System.Int32 value);
+        partial void OnServiceProviderId1Changed();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 service_categoryId
+        {
+            get
+            {
+                return _service_categoryId;
+            }
+            set
+            {
+                Onservice_categoryIdChanging(value);
+                ReportPropertyChanging("service_categoryId");
+                _service_categoryId = StructuralObject.SetValidValue(value, "service_categoryId");
+                ReportPropertyChanged("service_categoryId");
+                Onservice_categoryIdChanged();
+            }
+        }
+        private global::System.Int32 _service_categoryId;
+        partial void Onservice_categoryIdChanging(global::System.Int32 value);
+        partial void Onservice_categoryIdChanged();
 
         #endregion
 
@@ -4979,6 +6656,148 @@ namespace Diagram
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<FavoriteUser>("DbModel.ServiceFavoriteUser", "FavoriteUser", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "ServiceDestinationService", "DestinationService")]
+        public EntityCollection<DestinationService> DestinationService
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DestinationService>("DbModel.ServiceDestinationService", "DestinationService");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DestinationService>("DbModel.ServiceDestinationService", "DestinationService", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "ServiceAvailability", "Availability")]
+        public EntityCollection<Availability> Availability
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Availability>("DbModel.ServiceAvailability", "Availability");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Availability>("DbModel.ServiceAvailability", "Availability", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "ServiceProviderService1", "ServiceProvider")]
+        public ServiceProvider ServiceProvider1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ServiceProvider>("DbModel.ServiceProviderService1", "ServiceProvider").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ServiceProvider>("DbModel.ServiceProviderService1", "ServiceProvider").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ServiceProvider> ServiceProvider1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ServiceProvider>("DbModel.ServiceProviderService1", "ServiceProvider");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ServiceProvider>("DbModel.ServiceProviderService1", "ServiceProvider", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "ServiceReview", "Review")]
+        public EntityCollection<Review> Review
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Review>("DbModel.ServiceReview", "Review");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Review>("DbModel.ServiceReview", "Review", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "service_categoryService", "service_category")]
+        public service_category service_category
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service_category>("DbModel.service_categoryService", "service_category").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service_category>("DbModel.service_categoryService", "service_category").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<service_category> service_categoryReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service_category>("DbModel.service_categoryService", "service_category");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<service_category>("DbModel.service_categoryService", "service_category", value);
                 }
             }
         }
@@ -5142,6 +6961,32 @@ namespace Diagram
         private global::System.String _icon;
         partial void OniconChanging(global::System.String value);
         partial void OniconChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "service_categoryService", "Service")]
+        public EntityCollection<Service> Service
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Service>("DbModel.service_categoryService", "Service");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Service>("DbModel.service_categoryService", "Service", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -5526,6 +7371,28 @@ namespace Diagram
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "ServiceProviderService1", "Service")]
+        public EntityCollection<Service> Service1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Service>("DbModel.ServiceProviderService1", "Service");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Service>("DbModel.ServiceProviderService1", "Service", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -5634,6 +7501,32 @@ namespace Diagram
         private global::System.String _name;
         partial void OnnameChanging(global::System.String value);
         partial void OnnameChanged();
+
+        #endregion
+
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "Tagblog_tag", "blog_tag")]
+        public EntityCollection<blog_tag> blog_tag
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<blog_tag>("DbModel.Tagblog_tag", "blog_tag");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<blog_tag>("DbModel.Tagblog_tag", "blog_tag", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -5961,6 +7854,94 @@ namespace Diagram
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ServiceProvider>("DbModel.UserServiceProvider", "ServiceProvider", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "UserReservation", "Reservation")]
+        public EntityCollection<Reservation> Reservation
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Reservation>("DbModel.UserReservation", "Reservation");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Reservation>("DbModel.UserReservation", "Reservation", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "Usernotification", "notification")]
+        public EntityCollection<notification> notification
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<notification>("DbModel.Usernotification", "notification");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<notification>("DbModel.Usernotification", "notification", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "UserBlog", "Blog")]
+        public EntityCollection<Blog> Blog
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Blog>("DbModel.UserBlog", "Blog");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Blog>("DbModel.UserBlog", "Blog", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DbModel", "UserReview", "Review")]
+        public EntityCollection<Review> Review
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Review>("DbModel.UserReview", "Review");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Review>("DbModel.UserReview", "Review", value);
                 }
             }
         }
